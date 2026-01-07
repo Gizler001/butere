@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Butere Freighters</title>
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f8f8;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://via.placeholder.com/1920x800?text=Hero+Background")
+            no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 40px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        margin: 10px;
+        border: 2px solid white;
+        border-radius: 50px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-outline {
+        background: transparent;
+      }
+
+      .btn-outline:hover {
+        background: white;
+        color: #333;
+      }
+
+      .btn-primary {
+        background: #1a1a1a;
+        border-color: #1a1a1a;
+      }
+
+      .btn-primary:hover {
+        background: #333;
+        border-color: #333;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 80px 20px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      /* About Section */
+      .about-section {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .about-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .about-text h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+      }
+
+      .about-image {
+        flex: 1;
+        min-width: 300px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .image-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      /* Promise Section */
+      .promise-section {
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .promise-image {
+        flex: 1;
+        min-width: 300px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .promise-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .promise-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .promise-text h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .promise-text p {
+        font-size: 1.1rem;
+      }
+
+      /* Services Section */
+      .services-section {
+        background-color: #fff;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .service-image {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .service-content {
+        padding: 20px;
+      }
+
+      .service-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .service-content p {
+        color: #666;
+      }
+
+      /* Newsletter Section */
+      .newsletter-section {
+        background-color: #f0f0f0;
+        text-align: center;
+      }
+
+      .newsletter-form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #1a1a1a;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://via.placeholder.com/1920x600?text=Contact+Background")
+            no-repeat center center;
+        background-size: cover;
+        color: white;
+        padding: 60px 20px;
+      }
+
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: flex-start;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .contact-info h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .contact-info p {
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+      }
+
+      .contact-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .contact-item {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .contact-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .contact-item p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .about-section,
+        .promise-section,
+        .contact-container {
+          flex-direction: column;
+        }
+
+        .about-text,
+        .promise-text,
+        .contact-info {
+          text-align: center;
+        }
+
+        .about-image,
+        .promise-image {
+          width: 100%;
+        }
+
+        .service-card {
+          min-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Butere Freighters</h1>
+      <p>Exporting premium Kenyan goat meat worldwide with care</p>
+      <div>
+        <a href="#quote" class="btn btn-outline">Get Quote</a>
+        <a href="#about" class="btn btn-outline">Learn More</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="about-text">
+        <h2>About Butere Freighters</h2>
+        <p>We export quality goat meat and lamb from Kenya to the world.</p>
+        <a href="#quote" class="btn btn-outline">Get Quote</a>
+      </div>
+      <div class="about-image">
+        <img
+          src="https://via.placeholder.com/600x400?text=Cargo+Area"
+          alt="A bustling cargo area at Jomo Kenyatta International Airport with Butere Freighters trucks ready for export."
+        />
+        <div class="image-caption">
+          A bustling cargo area at Jomo Kenyatta International Airport with
+          Butere Freighters trucks ready for export.
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Promise Section -->
+    <section class="promise-section">
+      <div class="promise-image">
+        <img
+          src="https://via.placeholder.com/600x400?text=Packaged+Meat"
+          alt="Packages of lamb meat prepared for international shipping in a clean facility."
+        />
+      </div>
+      <div class="promise-text">
+        <h2>Our Promise</h2>
+        <p>
+          Reliable exports with care, ensuring your goods arrive fresh and on
+          time.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://via.placeholder.com/400x300?text=Goat+Meat"
+                alt="Goat Meat"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Goat Meat</h3>
+              <p>
+                Carefully sourced and handled goat meat from Kenya's best farms.
+              </p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://via.placeholder.com/400x300?text=Lamb+Meat"
+                alt="Lamb Meat"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Lamb Meat</h3>
+              <p>
+                Fresh lamb cuts exported with attention to quality and
+                freshness.
+              </p>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://via.placeholder.com/400x300?text=Logistics"
+                alt="Logistics"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Logistics</h3>
+              <p>
+                Reliable handling and timely shipment from Nairobi to global
+                markets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="container">
+        <h2 class="section-title">Stay Updated</h2>
+        <p>Get the latest export news and offers</p>
+        <div class="newsletter-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Full Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              placeholder="Enter name here"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Send Request</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-container">
+          <div class="contact-info">
+            <h2>Contact</h2>
+            <p>Reach us anytime for your export needs</p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <h3>EMAIL</h3>
+                <p>buterefrighters@gmail.com</p>
+              </div>
+              <div class="contact-item">
+                <h3>PHONE</h3>
+                <p>+254707482359</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Butere Freighters. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
